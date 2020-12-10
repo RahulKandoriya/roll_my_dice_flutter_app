@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:roll_my_dice/alert_dialogs/show_alert_dialog.dart';
 import 'package:roll_my_dice/alert_dialogs/show_exception_dialog.dart';
 import 'package:roll_my_dice/app/home/pages/empty_content.dart';
+import 'package:roll_my_dice/app/home/pages/userDetails/user_details_page.dart';
 import 'package:roll_my_dice/app/top_level_providers.dart';
 import 'package:roll_my_dice/constants/strings.dart';
 import 'package:roll_my_dice/models/appUser.dart';
@@ -88,15 +89,54 @@ class AccountPage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(appUser.score.toString(),
-                    style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(appUser.name,
+                        style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30),
+                      ),
+                      Text("Phone: " + appUser.phoneNumber,
+                        style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Text("App version: 2.0.0.1",
+                        style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ],
+                  )
                 ],
               ),
               SizedBox( height: 30,),
               Container(
                 height: 0.5,
                 color: Colors.grey,
+              ),
+              Material(
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UserDetailsPage( appUser: appUser,)),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only( left: 24, right: 24, top: 12, bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(Icons.edit, color: Colors.grey,),
+                        SizedBox( width: 12,),
+                        Expanded(
+                          child: Text(Strings.editUserDetails,
+                            style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.normal),
+                          ),
+                        ),
+                        Icon(Icons.arrow_forward_ios, color: Colors.grey,),
+                      ],
+                    ),
+                  ),
+                ),
               ),
               Material(
                 child: InkWell(
@@ -119,7 +159,7 @@ class AccountPage extends ConsumerWidget {
                   ),
                 ),
               ),
-              SizedBox( height: 60,),
+
             ],
           )
         ],

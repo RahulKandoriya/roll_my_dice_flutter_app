@@ -5,12 +5,13 @@ import 'package:meta/meta.dart';
 // ignore: must_be_immutable
 class LeaderBoardData extends Equatable {
   LeaderBoardData(
-      {@required this.id, @required this.score,});
+      {@required this.id,@required this.name, @required this.score,});
   final String id;
+  final String name;
   final int score;
 
   @override
-  List<Object> get props => [id,score,];
+  List<Object> get props => [id,name, score,];
 
   @override
   bool get stringify => true;
@@ -20,12 +21,14 @@ class LeaderBoardData extends Equatable {
       return null;
     }
 
+    final name  = data['name'] as String;
     final score = data['score'] as int;
-    return LeaderBoardData(id: id, score: score,);
+    return LeaderBoardData(id: id, name: name, score: score,);
   }
 
   Map<String, dynamic> toMap() {
     return {
+      'name' : name,
       'score' : score,
     };
   }

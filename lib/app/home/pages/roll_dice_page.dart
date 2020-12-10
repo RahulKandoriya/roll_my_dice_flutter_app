@@ -127,11 +127,34 @@ class RollDicePage extends ConsumerWidget {
             _updateUserDetails(context, appUser, dice.diceOneCount);
             if (appUser.numberOfAttempts == 0) {
               _setScoreToLeaderBoard(context,
-                  LeaderBoardData(id: documentIdFromCurrentDate(), score: appUser.score));
+                  LeaderBoardData(id: documentIdFromCurrentDate(), name: appUser.name, score: appUser.score));
             }
           },
           child: img,
-        )
+        ),
+        SizedBox( height: 50,),
+        RaisedButton(
+            onPressed: appUser.numberOfAttempts == 0 ? null : () {
+
+              updateDices(dice);
+              _updateUserDetails(context, appUser, dice.diceOneCount);
+              if (appUser.numberOfAttempts == 0) {
+                _setScoreToLeaderBoard(context,
+                    LeaderBoardData(id: documentIdFromCurrentDate(), name: appUser.name, score: appUser.score));
+              }
+            },
+            color: Colors.purple,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Text("Roll the dice",
+                style: TextStyle( fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),
+              ),
+            )
+        ),
+
       ],
     );
   }

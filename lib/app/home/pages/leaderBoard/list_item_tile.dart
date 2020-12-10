@@ -9,7 +9,8 @@ class ListItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(leaderBoardData.score.toString()),
+      title: Text(leaderBoardData.name.toString()),
+      trailing: Text(leaderBoardData.score.toString()),
     );
   }
 }

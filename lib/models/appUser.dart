@@ -5,13 +5,15 @@ import 'package:meta/meta.dart';
 // ignore: must_be_immutable
 class AppUser extends Equatable {
   AppUser(
-      {@required this.id, @required this.numberOfAttempts, @required this.score,});
+      {@required this.id, @required this.name, @required this.phoneNumber, @required this.numberOfAttempts, @required this.score,});
   final String id;
+  final String name;
+  final String phoneNumber;
   int numberOfAttempts;
   int score;
 
   @override
-  List<Object> get props => [id, numberOfAttempts,score,];
+  List<Object> get props => [id, name, phoneNumber, numberOfAttempts,score,];
 
   @override
   bool get stringify => true;
@@ -20,17 +22,18 @@ class AppUser extends Equatable {
     if (data == null) {
       return null;
     }
-    final numberOfAttempts = data['numberOfAttempts'] as int;
-    if (numberOfAttempts == null) {
-      return null;
-    }
 
+    final name = data['name'] as String;
+    final phoneNumber = data['phoneNumber'] as String;
+    final numberOfAttempts = data['numberOfAttempts'] as int;
     final score = data['score'] as int;
-    return AppUser(id: id, numberOfAttempts: numberOfAttempts, score: score,);
+    return AppUser(id: id, name: name, phoneNumber: phoneNumber, numberOfAttempts: numberOfAttempts, score: score,);
   }
 
   Map<String, dynamic> toMap() {
     return {
+      'name' : name,
+      'phoneNumber': phoneNumber,
       'numberOfAttempts': numberOfAttempts,
       'score' : score,
     };
