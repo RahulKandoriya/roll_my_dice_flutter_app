@@ -7,8 +7,8 @@ class AppUser extends Equatable {
   AppUser(
       {@required this.id, @required this.numberOfAttempts, @required this.score,});
   final String id;
-  final int numberOfAttempts;
-  final int score;
+  int numberOfAttempts;
+  int score;
 
   @override
   List<Object> get props => [id, numberOfAttempts,score,];

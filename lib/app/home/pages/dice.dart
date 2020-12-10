@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:roll_my_dice/app/home/pages/roll_dice_page.dart';
@@ -29,5 +31,4 @@ class Dice extends StatelessWidget {
     );
   }
 }
-
 
