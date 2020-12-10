@@ -143,7 +143,6 @@ class RollDicePage extends ConsumerWidget {
 
 class DiceModel with ChangeNotifier {
   int diceOne = 1;
-
   int get diceOneCount => diceOne;
 
   void generateDiceOne() {
