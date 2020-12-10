@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roll_my_dice/alert_dialogs/show_exception_dialog.dart';
@@ -87,58 +88,65 @@ class RollDicePage extends ConsumerWidget {
       gaplessPlayback: true,
     );
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        img,
-        SizedBox( height: 20,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(appUser.score.toString(),
-                  style: TextStyle( fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                Text("Your Score",
-                  style: TextStyle( fontSize: 30, color: Colors.black, decoration: null),
-                ),
-                SizedBox( height: 20,),
-                Text(appUser.numberOfAttempts.toString() + " Attempt(s) remained.",
-                  style: TextStyle( fontSize: 25, color: Colors.black),
-                ),
-              ],
-            )
-          ],
-        ),
-        SizedBox( height: 50,),
-        RaisedButton(
-            onPressed: appUser.numberOfAttempts == 0 ? null : () {
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          img,
+          SizedBox( height: 20,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(appUser.score.toString(),
+                    style: TextStyle( fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  Text("is your Score",
+                    style: TextStyle( fontSize: 30, color: Colors.black),
+                  ),
+                  SizedBox( height: 5,),
+                  Text("Your Score is the sum of\nthe the total attempts",
+                    style: TextStyle( fontSize: 14, color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox( height: 30,),
+                  Text(appUser.numberOfAttempts.toString() + " Attempt(s) remained.",
+                    style: TextStyle( fontSize: 25, color: Colors.black),
+                  ),
+                ],
+              )
+            ],
+          ),
+          SizedBox( height: 50,),
+          RaisedButton(
+              onPressed: appUser.numberOfAttempts == 0 ? null : () {
 
-              updateDices(dice);
-              _updateUserDetails(context, appUser, dice.diceOneCount);
-              if (appUser.numberOfAttempts == 0) {
-                _setScoreToLeaderBoard(context,
-                    LeaderBoardData(id: documentIdFromCurrentDate(), name: appUser.name, score: appUser.score));
-              }
-            },
-            color: Colors.purple,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Text("Roll the dice",
-                style: TextStyle( fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),
+                updateDices(dice);
+                _updateUserDetails(context, appUser, dice.diceOneCount);
+                if (appUser.numberOfAttempts == 0) {
+                  _setScoreToLeaderBoard(context,
+                      LeaderBoardData(id: documentIdFromCurrentDate(), name: appUser.name, score: appUser.score));
+                }
+              },
+              color: Colors.purple,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
               ),
-            )
-        ),
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Text("Roll the dice",
+                  style: TextStyle( fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),
+                ),
+              )
+          ),
 
-      ],
+        ],
+      ),
     );
   }
 

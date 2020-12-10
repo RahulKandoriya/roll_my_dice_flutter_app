@@ -32,7 +32,6 @@ dependencies:
   flutter_riverpod: ^0.10.1
   equatable: ^1.2.5
   provider: ^4.3.2
-  shared_preferences: any
   share: any
   flutter_launcher_icons: any
 

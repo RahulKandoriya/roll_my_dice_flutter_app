@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 @immutable
 // ignore: must_be_immutable
 class LeaderBoardData extends Equatable {
-  LeaderBoardData(
+  const LeaderBoardData(
       {@required this.id,@required this.name, @required this.score,});
   final String id;
   final String name;
