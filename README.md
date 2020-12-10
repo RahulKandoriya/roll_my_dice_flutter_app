@@ -4,4 +4,5 @@ The application is a game, where the Player can press a button to "Roll a dice",
 
 ## Getting Started
 
-
+1. Add required libraries from pub.dev
+2. Connect project in firebase console.
