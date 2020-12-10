@@ -1,0 +1,23 @@
+{
+    "name": "roll_my_dice",
+    "short_name": "roll_my_dice",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "The application is a game, where the Player can press a button to "Roll a dice", and get a Random result anywhere between 1 and 6, the Player gets 10 chances to play, and every time the result of the dice roll should get added to the Player's score. After 10 attempts the player's results should be logged into the leaderboard.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
