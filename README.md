@@ -6,3 +6,4 @@ The application is a game, where the Player can press a button to "Roll a dice",
 
 1. Add required libraries from pub.dev
 2. Connect project in firebase console.
+3. We will follow Stream based architecture using the package flutter_riverpod from pub.dev and with reference to https://codewithandrea.com/videos/2020-02-10-starter-architecture-flutter-firebase/.
