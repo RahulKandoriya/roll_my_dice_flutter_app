@@ -16,6 +16,10 @@ class LeaderBoardPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Leader Board"),
+        centerTitle: true,
+      ),
       body: _buildContents(context, watch),
     );
   }

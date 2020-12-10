@@ -91,6 +91,8 @@ class RollDicePage extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        img,
+        SizedBox( height: 20,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -103,34 +105,15 @@ class RollDicePage extends ConsumerWidget {
                   style: TextStyle( fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 Text("Your Score",
-                  style: TextStyle( fontSize: 30, color: Colors.black),
+                  style: TextStyle( fontSize: 30, color: Colors.black, decoration: null),
+                ),
+                SizedBox( height: 20,),
+                Text(appUser.numberOfAttempts.toString() + " Attempt(s) remained.",
+                  style: TextStyle( fontSize: 25, color: Colors.black),
                 ),
               ],
             )
           ],
-        ),
-        SizedBox( height: 20,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(appUser.numberOfAttempts.toString() + " Attempts remained.",
-              style: TextStyle( fontSize: 25, color: Colors.black),
-            ),
-          ],
-        ),
-        SizedBox( height: 20,),
-        GestureDetector(
-          onTap: appUser.numberOfAttempts == 0 ? null : () {
-
-            updateDices(dice);
-            _updateUserDetails(context, appUser, dice.diceOneCount);
-            if (appUser.numberOfAttempts == 0) {
-              _setScoreToLeaderBoard(context,
-                  LeaderBoardData(id: documentIdFromCurrentDate(), name: appUser.name, score: appUser.score));
-            }
-          },
-          child: img,
         ),
         SizedBox( height: 50,),
         RaisedButton(
