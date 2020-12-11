@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1057734435323",
+    "project_id": "rollmydicenow",
+    "storage_bucket": "rollmydicenow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057734435323:android:dcb9bc34cbed2388e92b5e",
+        "android_client_info": {
+          "package_name": "com.flutterfirebasegame.roll_my_dice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057734435323-9hri6s3hn541u3ub3rcrlej6kn7o0niq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcrIdErCyj4rGS43fospuwisdrHpkb5vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057734435323-9hri6s3hn541u3ub3rcrlej6kn7o0niq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
