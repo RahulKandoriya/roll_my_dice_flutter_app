@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -87,12 +89,17 @@ class RollDicePage extends ConsumerWidget {
       _diceOneImages[c - 1],
       gaplessPlayback: true,
     );
+    final player = AudioCache();
 
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Text("Roll your dice and Win!",
+            style: TextStyle( fontSize: 30, color: Colors.black),
+          ),
+          SizedBox( height: 20,),
           img,
           SizedBox( height: 20,),
           Row(
@@ -126,6 +133,7 @@ class RollDicePage extends ConsumerWidget {
           RaisedButton(
               onPressed: appUser.numberOfAttempts == 0 ? null : () {
 
+                player.play('/audio/diceroll_sound.mp3');
                 updateDices(dice);
                 _updateUserDetails(context, appUser, dice.diceOneCount);
                 if (appUser.numberOfAttempts == 0) {

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:roll_my_dice/alert_dialogs/show_alert_dialog.dart';
@@ -89,20 +90,70 @@ class AccountPage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(appUser.name,
-                        style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only( left: 16, bottom: 24, right: 16),
+                      padding: EdgeInsets.only( top: 16, bottom: 16, right: 16, left: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: new BorderRadius.circular(5.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 0.5,
+                            blurRadius: 4,
+                            offset: Offset(1, 1), // changes position of shadow
+                          ),
+                        ],
                       ),
-                      Text("Phone: " + appUser.phoneNumber,
-                        style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Name:",
+                                style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox( width: 20,),
+                              Text(appUser.name,
+                                style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.normal),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Phone:",
+                                style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox( width: 20,),
+                              Text(appUser.phoneNumber,
+                                style: TextStyle( fontWeight: FontWeight.normal, fontSize: 18),
+                              ),
+
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Version:",
+                                style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox( width: 20,),
+                              Text("2.0.0.1",
+                                style: TextStyle( fontWeight: FontWeight.normal, fontSize: 18),
+                              ),
+
+                            ],
+                          )
+                        ],
                       ),
-                      Text("App version: 2.0.0.1",
-                        style: TextStyle( fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ],
+                    ),
                   )
                 ],
               ),
@@ -120,12 +171,11 @@ class AccountPage extends ConsumerWidget {
                     );
                   },
                   child: Container(
-                    padding: EdgeInsets.only( left: 24, right: 24, top: 12, bottom: 12),
+                    padding: EdgeInsets.only( left: 16, right: 16, top: 12, bottom: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(Icons.edit, color: Colors.grey,),
                         SizedBox( width: 12,),
                         Expanded(
                           child: Text(Strings.editUserDetails,
@@ -142,7 +192,7 @@ class AccountPage extends ConsumerWidget {
                 child: InkWell(
                   onTap: () => _confirmSignOut(context, firebaseAuth),
                   child: Container(
-                    padding: EdgeInsets.only( left: 24, right: 24, top: 12, bottom: 12),
+                    padding: EdgeInsets.only( left: 16, right: 24, top: 12, bottom: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,7 +203,6 @@ class AccountPage extends ConsumerWidget {
                             style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.normal),
                           ),
                         ),
-                        Icon(Icons.arrow_forward_ios, color: Colors.grey,),
                       ],
                     ),
                   ),
