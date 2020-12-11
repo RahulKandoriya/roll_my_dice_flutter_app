@@ -18,3 +18,4 @@ entered the details then the screen "Add user details" will pop otherwise not. U
 8c. firestore_database: Different methods for specific CRUD operations in firestores.
 9. Rules for the firestore are: "allow read, write: if request.auth != null;" read and write data only if the user is authenticated. 
 10. The StreamCollection of the leaderboard firestore will require ordering in descending order according to the score so that the highest score appears at first.
+
