@@ -7,7 +7,7 @@ The application is a game, where the Player can press a button to "Roll a dice",
 1. Add required libraries from pub.dev
 2. Connect project in firebase console.
 3. We will follow Stream based architecture using the package flutter_riverpod from pub.dev and with reference to https://codewithandrea.com/videos/2020-02-10-starter-architecture-flutter-firebase/.
-4. We are using the auth with the phone number so first step of verifying the mobile number would be the same. Afterwards if the user has not 
+4. We are using the auth with the phone number so first step of verifying the mobile number would be the same for sign up or sign in. Afterwards if the user has not 
 entered the details then the screen "Add user details" will pop otherwise not. User can edit his/her details anytime.
 5. We will follow bottom navigation so there will be three tabs namely "RollDice", "LeaderBoard" and "Account".
 6. We are using this(https://stackoverflow.com/questions/60461109/dice-roll-animation-flutter) reference for creating the dice animation.
