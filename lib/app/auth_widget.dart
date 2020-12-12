@@ -72,7 +72,13 @@ class AuthWidget extends ConsumerWidget {
 
       return signedInBuilder(context);
     }
-    final newAppUser = AppUser(id: user.uid, name: null, phoneNumber: user.phoneNumber, numberOfAttempts: 10, score: 0);
+    final newAppUser = AppUser(id: user.uid,
+        name: null,
+        phoneNumber: user.phoneNumber != null ? user.phoneNumber : "Not provided",
+        email: user.email != null ? user.email : "Not provided",
+        numberOfAttempts: 10,
+        score: 0
+    );
     return UserDetailsPage( appUser: newAppUser,);
   }
 }

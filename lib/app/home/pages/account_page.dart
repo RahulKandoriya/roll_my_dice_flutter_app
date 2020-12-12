@@ -127,11 +127,11 @@ class AccountPage extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Phone:",
+                              Text(appUser.phoneNumber != null ? "Phone" : "Email",
                                 style: TextStyle( fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                               SizedBox( width: 20,),
-                              Text(appUser.phoneNumber,
+                              Text(appUser.phoneNumber != null ? appUser.phoneNumber : appUser.email,
                                 style: TextStyle( fontWeight: FontWeight.normal, fontSize: 18),
                               ),
 
@@ -141,7 +141,7 @@ class AccountPage extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Version:",
+                              Text("App Version:",
                                 style: TextStyle( fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                               SizedBox( width: 20,),

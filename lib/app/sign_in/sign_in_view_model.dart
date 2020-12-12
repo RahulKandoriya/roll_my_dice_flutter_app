@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 
 class SignInViewModel with ChangeNotifier {
@@ -94,6 +95,15 @@ class SignInViewModel with ChangeNotifier {
         break;
     }
     notifyListeners();
+  }
+
+  Future<void> signInWithGoogle() async {
+    isLoading = true;
+    notifyListeners();
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    GoogleAuthCredential googleAuthCredential = GoogleAuthProvider.credential( idToken: googleAuth.idToken, accessToken: googleAuth.accessToken );
+    await _signIn(() => auth.signInWithCredential(googleAuthCredential));
   }
 
   Future<void> verifyOtp(String pin) async {

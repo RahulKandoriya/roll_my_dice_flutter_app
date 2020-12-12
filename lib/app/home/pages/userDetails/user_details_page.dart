@@ -30,6 +30,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   int _score;
   int _numberOfAttempts;
   String _phoneNumber;
+  String _email;
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
@@ -38,6 +39,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
     if (widget.appUser != null) {
       _name = widget.appUser.name;
       _phoneNumber = widget.appUser.phoneNumber;
+      _email = widget.appUser.email;
       _score = widget.appUser.score;
       _numberOfAttempts = widget.appUser.numberOfAttempts;
     }
@@ -58,7 +60,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
         final database = context.read(databaseProvider);
         final id = auth.currentUser.uid;
         final phoneNumber  = auth.currentUser.phoneNumber;
-        final appUser = AppUser( id: id, name: _name, phoneNumber: phoneNumber, score: _score, numberOfAttempts: _numberOfAttempts);
+        final email  = auth.currentUser.email;
+        final appUser = AppUser( id: id, name: _name, phoneNumber: phoneNumber, email: email, score: _score, numberOfAttempts: _numberOfAttempts);
         await database.setUserDetails(appUser);
         Navigator.of(context).pop();
       } catch (e) {
@@ -149,6 +152,13 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
         style: TextStyle( color: Colors.grey, fontSize: 12),
       ),
       Text(_phoneNumber,
+        style: TextStyle( color: Colors.grey, fontSize: 18),
+      ),
+      SizedBox( height: 10,),
+      Text("Email",
+        style: TextStyle( color: Colors.grey, fontSize: 12),
+      ),
+      Text(_email,
         style: TextStyle( color: Colors.grey, fontSize: 18),
       ),
     ];

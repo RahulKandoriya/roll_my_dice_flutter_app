@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:roll_my_dice/alert_dialogs/show_exception_dialog.dart';
+import 'package:roll_my_dice/app/sign_in/google_login_button.dart';
 import './sign_in_view_model.dart';
 import './loading.dart';
 import 'package:roll_my_dice/app/top_level_providers.dart';
@@ -149,6 +150,31 @@ class _SignInState extends State<SignIn> {
                 style: TextStyle( fontWeight: FontWeight.normal, fontSize: 20, color: Colors.white),
               ),
             )
+        ),
+        SizedBox( height: 50,),
+        RaisedButton(
+          color: Colors.white,
+          onPressed: () {
+            viewModel.signInWithGoogle();
+          },
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image(image: AssetImage("assets/images/google_logo.png"), height: 35.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Tap to Enter',
+                    style: TextStyle(fontSize: 25, color: Colors.black87, fontWeight: FontWeight.bold, height: 1.3),
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
         SizedBox( height: 30,),
         RichText(
