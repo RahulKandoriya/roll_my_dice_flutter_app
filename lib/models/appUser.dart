@@ -5,16 +5,18 @@ import 'package:meta/meta.dart';
 // ignore: must_be_immutable
 class AppUser extends Equatable {
   AppUser(
-      {@required this.id, @required this.name, @required this.phoneNumber, @required this.email, @required this.numberOfAttempts, @required this.score,});
+      {@required this.id, @required this.name, @required this.phoneNumber, @required this.email, @required this.numberOfAttempts, @required this.score, @required this.maximumAttempts, @required this.maximumScore,});
   final String id;
   final String name;
   final String phoneNumber;
   final String email;
   int numberOfAttempts;
   int score;
+  int maximumAttempts;
+  int maximumScore;
 
   @override
-  List<Object> get props => [id, name, phoneNumber, email, numberOfAttempts,score,];
+  List<Object> get props => [id, name, phoneNumber, email, numberOfAttempts,score, maximumAttempts, maximumScore];
 
   @override
   bool get stringify => true;
@@ -29,7 +31,9 @@ class AppUser extends Equatable {
     final email = data['email'] as String;
     final numberOfAttempts = data['numberOfAttempts'] as int;
     final score = data['score'] as int;
-    return AppUser(id: id, name: name, phoneNumber: phoneNumber, email: email, numberOfAttempts: numberOfAttempts, score: score,);
+    final maximumAttempts = data['maximumAttempts'] as int;
+    final maximumScore = data['maximumScore'] as int;
+    return AppUser(id: id, name: name, phoneNumber: phoneNumber, email: email, numberOfAttempts: numberOfAttempts, score: score, maximumAttempts: maximumAttempts, maximumScore: maximumScore);
   }
 
   Map<String, dynamic> toMap() {
@@ -39,6 +43,8 @@ class AppUser extends Equatable {
       'email' : email,
       'numberOfAttempts': numberOfAttempts,
       'score' : score,
+      'maximumAttempts' : maximumAttempts,
+      'maximumScore' : maximumScore
     };
   }
 }

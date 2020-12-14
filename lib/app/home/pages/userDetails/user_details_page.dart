@@ -29,6 +29,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   String _name;
   int _score;
   int _numberOfAttempts;
+  int _maxScore;
+  int _maxAttempts;
   String _phoneNumber;
   String _email;
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -42,6 +44,8 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
       _email = widget.appUser.email;
       _score = widget.appUser.score;
       _numberOfAttempts = widget.appUser.numberOfAttempts;
+      _maxScore = widget.appUser.maximumScore;
+      _maxAttempts = widget.appUser.maximumAttempts;
     }
   }
 
@@ -61,7 +65,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
         final id = auth.currentUser.uid;
         final phoneNumber  = auth.currentUser.phoneNumber;
         final email  = auth.currentUser.email;
-        final appUser = AppUser( id: id, name: _name, phoneNumber: phoneNumber, email: email, score: _score, numberOfAttempts: _numberOfAttempts);
+        final appUser = AppUser( id: id, name: _name, phoneNumber: phoneNumber, email: email, score: _score, numberOfAttempts: _numberOfAttempts, maximumScore: _maxScore, maximumAttempts: _maxAttempts);
         await database.setUserDetails(appUser);
         Navigator.of(context).pop();
       } catch (e) {

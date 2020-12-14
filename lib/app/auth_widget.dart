@@ -52,7 +52,7 @@ class AuthWidget extends ConsumerWidget {
   Widget homePageBuilder(BuildContext context, ScopedReader watch, User user) {
     final appUserDetailsStream = watch(appUserDetailsStreamProvider);
     return appUserDetailsStream.when(
-      data: (businessUser) => _homePageData(context, businessUser, user),
+      data: (appUser) => _homePageData(context, appUser, user),
       loading: () => const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -76,8 +76,10 @@ class AuthWidget extends ConsumerWidget {
         name: null,
         phoneNumber: user.phoneNumber != null ? user.phoneNumber : "Not provided",
         email: user.email != null ? user.email : "Not provided",
-        numberOfAttempts: 10,
-        score: 0
+        numberOfAttempts: 0,
+        score: 0,
+        maximumAttempts: 10,
+        maximumScore: 30,
     );
     return UserDetailsPage( appUser: newAppUser,);
   }
