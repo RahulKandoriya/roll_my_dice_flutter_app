@@ -267,11 +267,18 @@ class RollDicePage extends ConsumerWidget {
                     final scoreDifference  = appUser.maximumScore - appUser.score;
                     final numberOfAttemptsDifference = appUser.maximumAttempts - appUser.numberOfAttempts;
                     if( scoreDifference > 6 ){
+                      //if the score difference is more than 6 then all the dice outcome will be allowed.
                       updateDices(dice, 5, true);
                     } else {
                       if(numberOfAttemptsDifference < scoreDifference) {
+
+                        //if the score difference is more than the numberOfAttempts then the allowed dice outcomes are
+                        // (scoreDifference - 2) and -2 because score difference should not be dice outcome in one attempt
+
                         updateDices(dice, scoreDifference - 2, true);
                       } else {
+
+                        //if the score difference is less than the number of attempts then the dice outcome should be (numberOfAttemptsDifference - 2)
                         updateDices(dice, numberOfAttemptsDifference - 2, false);
                       }
                     }
@@ -333,7 +340,12 @@ class DiceModel with ChangeNotifier {
   void generateDiceOne(int maxNumber, bool isScore) {
 
     if(isScore){
+
+      //whenever the score difference is more than the number of attempts then all the dice outcome should be allowed
+      // otherwise if the number of attempts are more than the score difference then only one dice outcome is allowed that is 1
+
       if(maxNumber <=1) {
+        //when the maxNumber is less than or equal to 1 then only one dice outcome is allowed that is 1
         diceOne = 1;
       } else {
         diceOne = Random().nextInt(maxNumber) + 1;
