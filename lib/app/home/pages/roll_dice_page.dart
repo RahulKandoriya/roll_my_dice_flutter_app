@@ -268,18 +268,18 @@ class RollDicePage extends ConsumerWidget {
                     final numberOfAttemptsDifference = appUser.maximumAttempts - appUser.numberOfAttempts;
                     if( scoreDifference > 6 ){
                       //if the score difference is more than 6 then all the dice outcome will be allowed.
-                      updateDices(dice, 5, true);
+                      updateDices(dice, 5);
                     } else {
                       if(numberOfAttemptsDifference < scoreDifference) {
 
                         //if the score difference is more than the numberOfAttempts then the allowed dice outcomes are
                         // (scoreDifference - 2) and -2 because score difference should not be dice outcome in one attempt
 
-                        updateDices(dice, scoreDifference - 2, true);
+                        updateDices(dice, scoreDifference - 2);
                       } else {
 
                         //if the score difference is less than the number of attempts then the dice outcome should be (numberOfAttemptsDifference - 2)
-                        updateDices(dice, numberOfAttemptsDifference - 2, false);
+                        updateDices(dice, numberOfAttemptsDifference - 2);
                       }
                     }
 
@@ -326,8 +326,8 @@ class RollDicePage extends ConsumerWidget {
     );
   }
 
-  void updateDices(DiceModel dice, int maxNumber, bool isScore) async {
-    dice.generateDiceOne(maxNumber, isScore);
+  void updateDices(DiceModel dice, int maxNumber) async {
+    dice.generateDiceOne(maxNumber);
   }
 
 
@@ -337,21 +337,13 @@ class DiceModel with ChangeNotifier {
   int diceOne = 1;
   int get diceOneCount => diceOne;
 
-  void generateDiceOne(int maxNumber, bool isScore) {
+  void generateDiceOne(int maxNumber) {
 
-    if(isScore){
-
-      //whenever the score difference is more than the number of attempts then all the dice outcome should be allowed
-      // otherwise if the number of attempts are more than the score difference then only one dice outcome is allowed that is 1
-
-      if(maxNumber <=1) {
-        //when the maxNumber is less than or equal to 1 then only one dice outcome is allowed that is 1
-        diceOne = 1;
-      } else {
-        diceOne = Random().nextInt(maxNumber) + 1;
-      }
-    } else {
+    if(maxNumber <=1) {
+      //when the maxNumber is less than or equal to 1 then only one dice outcome is allowed that is 1
       diceOne = 1;
+    } else {
+      diceOne = Random().nextInt(maxNumber) + 1;
     }
     print("diceOne: $diceOne");
     notifyListeners();
